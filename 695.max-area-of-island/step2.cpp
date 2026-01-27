@@ -8,7 +8,7 @@
  * 境界条件別に今回は気にする必要ないけど、n == 0のときも取っといていいなって見返して思ったので追加。
  * 関数の引数がintになっていて暗黙の型変換が起きていることに気づいた。
  * 全て正しくsize_tで引き回すのが難しいのと、あまりここの型変換は問われないとのことなので、あきらめてsize_tをintで受けてしまおうという気持ち。
- * 
+ *
  */
 
 // @lc code=start
@@ -54,12 +54,12 @@ public:
                 throw logic_error("");
             for (int j = 0; j < n; j++)
             {
-                int area = 0;
                 if (grid[i][j])
                 {
+                    int area = 0;
                     areaSizeOfIsland(i, j, grid, area);
+                    maxArea = max(maxArea, area);
                 }
-                maxArea = max(maxArea, area);
             }
         }
         return maxArea;
