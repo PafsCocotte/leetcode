@@ -1,0 +1,26 @@
+---
+Language: Cpp
+BasedOnStyle: Google
+
+# インデント幅
+IndentWidth: 4
+ColumnLimit: 100
+
+# 波括弧の前で改行する（Allmanスタイル）
+BreakBeforeBraces: Allman
+
+# ポインタの寄せ方（int* p）
+PointerAlignment: Left
+
+# 連続する空行を制限
+MaxEmptyLinesToKeep: 1
+
+# ソート設定
+SortIncludes: true
+
+# 1行に収まる短い記述の許可設定
+AllowShortFunctionsOnASingleLine: None
+AllowShortBlocksOnASingleLine: false
+AllowShortIfStatementsOnASingleLine: false
+
+---
