@@ -49,7 +49,7 @@ class Solution
         return count == 1;
     }
 
-    vector<string> collectStringsDifferingByExactlyOneChar(const string& s, const vector<string>& wordList, vector<bool>& used)
+    vector<string> collectStringsDifferingByExactlyOneChar(const string& s, const vector<string>& wordList, vector<uint8_t>& used)
     {
         vector<string> result;
         for (int i = 0; i < wordList.size(); i++)
@@ -61,7 +61,7 @@ class Solution
             if (differsByExactlyOneChar(s, wordList[i]))
             {
                 result.push_back(wordList[i]);
-                used[i] = true;
+                used[i] = 1;
             }
         }
         return result;
@@ -69,7 +69,7 @@ class Solution
 
     int ladderLength(string beginWord, string endWord, vector<string>& wordList)
     {
-        vector<bool> used(wordList.size());
+        vector<uint8_t> used(wordList.size());
         using WordAndLadderLength = pair<string, int>;
         queue<WordAndLadderLength> candidates;
         candidates.emplace(beginWord, 1);
