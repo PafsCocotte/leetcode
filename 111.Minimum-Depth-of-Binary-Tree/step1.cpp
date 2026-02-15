@@ -22,31 +22,38 @@ bfsでleafを見つけて見つけたらその深さを返せばいい。
 exampleを見るにrootしかなければそれは深さが1のようなのでrootがnullなら0。
 queueの命名が全くできずqとした。
 */
-#include <string>
 #include <queue>
+#include <string>
 
 using namespace std;
 
 // struct TreeNode;
 
-class Solution {
-public:
-    int minDepth(TreeNode* root) {
-        if(!root) {
+class Solution
+{
+   public:
+    int minDepth(TreeNode* root)
+    {
+        if (!root)
+        {
             return 0;
         }
         queue<pair<TreeNode*, int>> q;
-        q.emplace(root,1);
-        while(!q.empty()) {
+        q.emplace(root, 1);
+        while (!q.empty())
+        {
             auto [node, depth] = q.front();
             q.pop();
-            if(node->left) {
-                q.emplace(node->left, depth+1);
+            if (node->left)
+            {
+                q.emplace(node->left, depth + 1);
             }
-            if(node->right) {
-                q.emplace(node->right, depth+1);
+            if (node->right)
+            {
+                q.emplace(node->right, depth + 1);
             }
-            if(!node->left && !node->right) {
+            if (!node->left && !node->right)
+            {
                 return depth;
             }
         }
@@ -54,4 +61,3 @@ public:
     }
 };
 // @lc code=end
-

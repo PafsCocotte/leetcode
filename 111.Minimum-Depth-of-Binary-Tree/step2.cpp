@@ -24,35 +24,43 @@
   結局どれも汎用的でqueueをqって書くのとあまり読み手の理解度に影響を与えない気がするし、
   14行の関数なのでqと書いても読めるという説もあるが、今回は勉強なのでfrontierを採用してみる。
 - queueに深さ情報を持たせるのではなく、queueのサイズを階層ごとに保持して階層単位で処理するとintがないぶんメモリ効率がいいとAIに言われた。
-  よくね？っておもったのでこのままにする。
+  二重ループ分、読み手への負荷が上がる気がしたのでこのままにする。
 */
-#include <string>
 #include <queue>
+#include <string>
 
 using namespace std;
 
-class Solution {
-public:
-    struct NodeAndDepth {
+class Solution
+{
+   public:
+    struct NodeAndDepth
+    {
         TreeNode* node;
         int depth;
     };
-    int minDepth(TreeNode* root) {
-        if(!root) {
+    int minDepth(TreeNode* root)
+    {
+        if (!root)
+        {
             return 0;
         }
         queue<NodeAndDepth> frontier;
-        frontier.emplace(root,1);
-        while(!frontier.empty()) {
+        frontier.emplace(root, 1);
+        while (!frontier.empty())
+        {
             auto [node, depth] = frontier.front();
             frontier.pop();
-            if(node->left) {
-                frontier.emplace(node->left, depth+1);
+            if (node->left)
+            {
+                frontier.emplace(node->left, depth + 1);
             }
-            if(node->right) {
-                frontier.emplace(node->right, depth+1);
+            if (node->right)
+            {
+                frontier.emplace(node->right, depth + 1);
             }
-            if(!node->left && !node->right) {
+            if (!node->left && !node->right)
+            {
                 return depth;
             }
         }
@@ -60,4 +68,3 @@ public:
     }
 };
 // @lc code=end
-
