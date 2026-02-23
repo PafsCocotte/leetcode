@@ -40,18 +40,18 @@ class Solution
         {
             return {};
         }
-        vector<vector<int>> result;
+        vector<vector<int>> eachLevelNodeValues;
         queue<TreeNode*> frontier;
         frontier.push(root);
         while (!frontier.empty())
         {
             int levelSize = frontier.size();
-            vector<int> currentLevelNodeValue;
+            vector<int> values;
             for (int i = 0; i < levelSize; i++)
             {
                 auto node = frontier.front();
                 frontier.pop();
-                currentLevelNodeValue.push_back(node->val);
+                values.push_back(node->val);
                 if (node->left)
                 {
                     frontier.push(node->left);
@@ -61,9 +61,9 @@ class Solution
                     frontier.push(node->right);
                 }
             }
-            result.push_back(currentLevelNodeValue);
+            eachLevelNodeValues.push_back(values);
         }
-        return result;
+        return eachLevelNodeValues;
     }
 };
 // @lc code=end
