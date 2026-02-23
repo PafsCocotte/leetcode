@@ -36,10 +36,9 @@ class Solution
         }
         queue<TreeNode*> frontier;
         frontier.push(root);
-        int depth = 0;
+        int depth = 1;
         while (!frontier.empty())
         {
-            depth++;
             int levelSize = frontier.size();
             for (int i = 0; i < levelSize; i++)
             {
@@ -58,6 +57,7 @@ class Solution
                     frontier.push(node->right);
                 }
             }
+            depth++;
         }
         return -1;
     }
